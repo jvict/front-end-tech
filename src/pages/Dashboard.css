@@ -1,0 +1,36 @@
+.dashboard-main {
+  min-height: 100vh;
+  background: linear-gradient(135deg,#dcebfe 0%, #edf8ff 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 1rem 1.5rem 1rem;
+}
+
+.dashboard-header {
+  background: linear-gradient(90deg, #f6d365 10%, #fda085 100%);
+  color: #224;
+  padding: 1.2rem 1.8rem 1.2rem 1rem;
+  border-radius: 1.1rem;
+  box-shadow: 0 4px 28px #fcda8c33;
+  margin-bottom: 2rem;
+  text-align: center;
+  max-width: 600px;
+}
+.dashboard-header h2 {
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  font-size: 2.2rem;
+  margin-bottom: 0.1em;
+  line-height: 1.1;
+  letter-spacing: -1px;
+}
+.dashboard-header h2 span {
+  background: linear-gradient(90deg, #1debff 13%, #4f8cff 95%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.dashboard-header p {
+  font-size: 1.07em;
+  margin: 7px 0 0 0;
+  color: #454b70;
+}

@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { EvolutionForm } from "../components/EvolutionForm";
+
+import "./Dashboard.css";
+import { EvolutionBarChart } from "../components/EvolutionTable";
 
 type Evolution = {
   origin: string;
@@ -31,50 +35,24 @@ export function Dashboard() {
   }, []);
 
   return (
-    <div>
-      <h2>Evolução temporal da taxa de conversão</h2>
-      <form
-        onSubmit={e => {
-          e.preventDefault();
-          fetchData();
-        }}
-      >
-        <label>
-          Canal:
-          <input value={origin} onChange={e => setOrigin(e.target.value)} />
-        </label>
-        <label>
-          Data início:
-          <input type="date" value={dateStart} onChange={e => setDateStart(e.target.value)} />
-        </label>
-        <label>
-          Data fim:
-          <input type="date" value={dateEnd} onChange={e => setDateEnd(e.target.value)} />
-        </label>
-        <button type="submit">Filtrar</button>
-      </form>
-      <table>
-        <thead>
-          <tr>
-            <th>Canal</th>
-            <th>Data</th>
-            <th>Total</th>
-            <th>Válidos</th>
-            <th>Taxa de conversão (%)</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map(d => (
-            <tr key={d.origin + d.day}>
-              <td>{d.origin}</td>
-              <td>{d.day}</td>
-              <td>{d.total}</td>
-              <td>{d.valid}</td>
-              <td>{d.conversion_rate}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <main className="dashboard-main">
+      <div className="dashboard-header">
+        <h2>Evolução Temporal da <span>Taxa de Conversão</span></h2>
+        <p>
+          Visualize de forma rápida e colorida a conversão dos canais ao longo do tempo.<br />
+          Use os filtros para refinar sua análise!
+        </p>
+      </div>
+      <EvolutionForm
+        origin={origin}
+        dateStart={dateStart}
+        dateEnd={dateEnd}
+        onOriginChange={setOrigin}
+        onDateStartChange={setDateStart}
+        onDateEndChange={setDateEnd}
+        onSubmit={fetchData}
+      />
+      <EvolutionBarChart data={data} />
+    </main>
   );
 }
